@@ -18,7 +18,7 @@ export class SpeedRead {
 
   @Method()
   async start() {
-    this.currentTimerId = setInterval(() => {
+    this.currentTimerId = window.setInterval(() => {
       this.currentIndex++;
       if (this.currentIndex >= this.words.length) {
         this.stop();
@@ -47,7 +47,7 @@ export class SpeedRead {
     if (newValue !== oldValue) {
       this.stop();
 
-      const allWords = newValue.split(/\s+/);
+      const allWords = newValue ? newValue.split(/\s+/) : [];
 
       this.words = allWords
         .flatMap((word) => {

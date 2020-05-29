@@ -1,36 +1,42 @@
-import { newSpecPage } from '@stencil/core/testing';
-import { MyComponent } from './my-component';
+import { newSpecPage } from "@stencil/core/testing";
+import { SpeedRead } from "./speed-read";
 
-describe('my-component', () => {
-  it('renders', async () => {
-    const {root} = await newSpecPage({
-      components: [MyComponent],
-      html: '<my-component></my-component>'
+describe("speed-read", () => {
+  it("renders", async () => {
+    const { root } = await newSpecPage({
+      components: [SpeedRead],
+      html: "<speed-read></speed-read>",
     });
     expect(root).toEqualHtml(`
-      <my-component>
+      <speed-read>
         <mock:shadow-root>
-          <div>
-            Hello, World! I'm
-          </div>
+          <div class="reader"></div>
         </mock:shadow-root>
-      </my-component>
+      </speed-read>
     `);
   });
 
-  it('renders with values', async () => {
-    const {root} = await newSpecPage({
-      components: [MyComponent],
-      html: `<my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>`
+  it("renders with values", async () => {
+    const { root } = await newSpecPage({
+      components: [SpeedRead],
+      html: `<speed-read text="Stencil" ></speed-read>`,
     });
     expect(root).toEqualHtml(`
-      <my-component first="Stencil" last="'Don't call me a framework' JS">
+      <speed-read text="Stencil">
         <mock:shadow-root>
-          <div>
-            Hello, World! I'm Stencil 'Don't call me a framework' JS
+          <div class="reader">
+            <span class="start">
+              St
+            </span>
+            <span class="focus">
+              e
+            </span>
+            <span class="end">
+              ncil
+            </span>
           </div>
         </mock:shadow-root>
-      </my-component>
+      </speed-read>
     `);
   });
 });
