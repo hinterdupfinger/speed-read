@@ -1,0 +1,40 @@
+:host {
+  display: block;
+  font-size: var(--speed-read-font-size, 2rem);
+  font-family: var(--speed-read-font-family, monospace);
+  width: 100%;
+}
+
+.reader {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  cursor: pointer;
+  color: var(--speed-read-color-text, #3a445d);
+}
+
+.start {
+  flex-grow: 0;
+  flex-shrink: 0;
+  text-align: right;
+  flex: 999;
+}
+.focus {
+  color: var(--speed-read-color-text-focus, #df9a57);
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex: 1;
+}
+
+.focus::after {
+  content: "•";
+  display: block;
+  text-align: center;
+}
+
+.end {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex: 999;
+}
